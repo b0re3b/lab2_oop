@@ -5,10 +5,10 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import javax.xml.datatype.DatatypeFactory;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
 import java.math.BigDecimal;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class SAXParser {
     public List<DepositModel> parse(String xmlPath) throws Exception {
         List<DepositModel> deposits = new ArrayList<>();
         SAXParserFactory factory = SAXParserFactory.newInstance();
-        SAXParser saxParser = factory.newSAXParser();
+        javax.xml.parsers.SAXParser saxParser = factory.newSAXParser();
 
         DefaultHandler handler = new DefaultHandler() {
             private DepositModel currentDeposit;
@@ -28,7 +28,7 @@ public class SAXParser {
                     currentDeposit = new DepositModel();
                     currentDeposit.setId(attributes.getValue("id"));
                 }
-                elementValue.setLength(0);
+                elementValue.setLength(0); // очистити значення елемента
             }
 
             @Override
@@ -42,27 +42,39 @@ public class SAXParser {
 
                 switch (qName) {
                     case "Name":
-                        currentDeposit.setName(value);
+                        if (!value.isEmpty()) currentDeposit.setName(value);
                         break;
                     case "Country":
-                        currentDeposit.setCountry(value);
+                        if (!value.isEmpty()) currentDeposit.setCountry(value);
                         break;
                     case "Type":
-                        currentDeposit.setType(value);
+                        if (!value.isEmpty()) currentDeposit.setType(value);
                         break;
                     case "Depositor":
-                        currentDeposit.setDepositor(value);
+                        if (!value.isEmpty()) currentDeposit.setDepositor(value);
                         break;
                     case "Amount":
-                        currentDeposit.setAmount(new BigDecimal(value));
+                        try {
+                            currentDeposit.setAmount(new BigDecimal(value));
+                        } catch (NumberFormatException e) {
+                            currentDeposit.setAmount(BigDecimal.ZERO);
+                        }
                         break;
                     case "Profitability":
-                        currentDeposit.setProfitability(new BigDecimal(value));
+                        try {
+                            currentDeposit.setProfitability(new BigDecimal(value));
+                        } catch (NumberFormatException e) {
+                            currentDeposit.setProfitability(BigDecimal.ZERO);
+                        }
                         break;
                     case "TimeConstraints":
-                        currentDeposit.setTimeConstraints(
-                                DatatypeFactory.newInstance().newDuration(value)
-                        );
+                        try {
+                            // Перетворення значення на Duration (якщо воно зберігається як число)
+                            long timeInDays = Long.parseLong(value);
+                            currentDeposit.setTimeConstraints(Duration.ofDays(timeInDays));
+                        } catch (Exception e) {
+                            currentDeposit.setTimeConstraints(Duration.ZERO); // або інша обробка помилки
+                        }
                         break;
                     case "Deposit":
                         deposits.add(currentDeposit);

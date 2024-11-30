@@ -1,10 +1,10 @@
 package com.bankdeposits.model;
 
-import javax.xml.datatype.Duration;
 import java.math.BigDecimal;
+import java.time.Duration;
 import java.util.Objects;
 
-public class DepositModel implements Comparable<Deposit> {
+public class DepositModel implements Comparable<DepositModel> {
     private String id;
     private String name;
     private String country;
@@ -12,15 +12,15 @@ public class DepositModel implements Comparable<Deposit> {
     private String depositor;
     private BigDecimal amount;
     private BigDecimal profitability;
-    private Duration timeConstraints;
+    private Duration timeConstraints;  // Використовуємо Duration, а не long
 
     // Конструктор за замовчуванням
-    public Deposit() {}
+    public DepositModel() {}
 
     // Повний конструктор
-    public Deposit(String id, String name, String country, String type,
-                   String depositor, BigDecimal amount,
-                   BigDecimal profitability, Duration timeConstraints) {
+    public DepositModel(String id, String name, String country, String type,
+                        String depositor, BigDecimal amount,
+                        BigDecimal profitability, Duration timeConstraints) {
         this.id = id;
         this.name = name;
         this.country = country;
@@ -92,42 +92,41 @@ public class DepositModel implements Comparable<Deposit> {
         return timeConstraints;
     }
 
+    // Використовуємо Duration, а не long
     public void setTimeConstraints(Duration timeConstraints) {
         this.timeConstraints = timeConstraints;
     }
 
-    // Реалізація Comparable для базового сортування за сумою вкладу
     @Override
-    public int compareTo(Deposit other) {
+    public int compareTo(DepositModel other) {
         return this.amount.compareTo(other.amount);
     }
 
-    // Перевизначення equals
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Deposit deposit = (Deposit) o;
+        DepositModel deposit = (DepositModel) o;
         return Objects.equals(id, deposit.id) &&
                 Objects.equals(name, deposit.name) &&
                 Objects.equals(amount, deposit.amount);
     }
 
-    // Перевизначення hashCode
     @Override
     public int hashCode() {
         return Objects.hash(id, name, amount);
     }
 
-    // Зручний toString для логування та виведення
     @Override
     public String toString() {
-        return "Deposit{" +
+        return "DepositModel{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
+                ", country='" + country + '\'' +
                 ", type='" + type + '\'' +
                 ", amount=" + amount +
                 ", profitability=" + profitability +
+                ", timeConstraints=" + timeConstraints +
                 '}';
     }
 }

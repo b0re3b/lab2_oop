@@ -6,10 +6,16 @@ import com.bankdeposits.parser.DOMParser;
 import com.bankdeposits.parser.SAXParser;
 import com.bankdeposits.parser.StAXParser;
 import com.bankdeposits.validator.XMLValidator;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.xml.transform.*;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,9 +23,19 @@ public class MainApplication {
     private static final Logger logger = LogManager.getLogger(MainApplication.class);
     private static final String XML_PATH = "src/main/resources/bank_deposits.xml";
     private static final String XSD_PATH = "src/main/resources/bank_deposits.xsd";
+    private static final String XSL_PATH = "src/main/resources/transformation.xsl"; // шлях до XSLT
 
     public static void main(String[] args) {
         try {
+            // Перевірка на існування файлів
+            File xmlFile = new File(XML_PATH);
+            File xsdFile = new File(XSD_PATH);
+            File xslFile = new File(XSL_PATH); // перевірка на наявність XSLT
+            if (!xmlFile.exists() || !xsdFile.exists() || !xslFile.exists()) {
+                logger.error("Файл XML, XSD або XSL не знайдено.");
+                return;
+            }
+
             // Валідація XML
             validateXMLDocument();
 
@@ -28,6 +44,9 @@ public class MainApplication {
 
             // Демонстрація сортування
             demonstrateSorting();
+
+            // Трансформація XML за допомогою XSLT
+            transformXMLWithXSLT();
 
         } catch (Exception e) {
             logger.error("Помилка в роботі додатку", e);
@@ -80,4 +99,23 @@ public class MainApplication {
                 logger.info(deposit.getName() + ": " + deposit.getProfitability() + "%")
         );
     }
+
+    private static void transformXMLWithXSLT() throws TransformerException, IOException {
+        // Створення джерела для XML та XSLT
+        StreamSource xmlSource = new StreamSource(new FileInputStream(XML_PATH));
+        StreamSource xslSource = new StreamSource(new FileInputStream(XSL_PATH));
+
+        // Створення трансформера
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer(xslSource);
+
+        // Виведення трансформованого результату в текстовий файл
+        File outputFile = new File("src/main/resources/transformed_output.txt");
+        StreamResult result = new StreamResult(new FileOutputStream(outputFile));
+
+        // Виконання трансформації
+        transformer.transform(xmlSource, result);
+        logger.info("XML файл успішно трансформовано з використанням XSLT в: " + outputFile.getAbsolutePath());
+    }
 }
+

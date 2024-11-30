@@ -10,6 +10,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.math.BigDecimal;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,19 +35,26 @@ public class DOMParser {
             deposit.setType(getElementTextContent(depositElement, "Type"));
             deposit.setDepositor(getElementTextContent(depositElement, "Depositor"));
 
-            deposit.setAmount(new BigDecimal(
-                    getElementTextContent(depositElement, "Amount")
-            ));
+            try {
+                deposit.setAmount(new BigDecimal(getElementTextContent(depositElement, "Amount")));
+            } catch (NumberFormatException e) {
+                deposit.setAmount(BigDecimal.ZERO); // або інша обробка помилки
+            }
 
-            deposit.setProfitability(new BigDecimal(
-                    getElementTextContent(depositElement, "Profitability")
-            ));
+            try {
+                deposit.setProfitability(new BigDecimal(getElementTextContent(depositElement, "Profitability")));
+            } catch (NumberFormatException e) {
+                deposit.setProfitability(BigDecimal.ZERO);
+            }
 
-            deposit.setTimeConstraints(
-                    DatatypeFactory.newInstance().newDuration(
-                            getElementTextContent(depositElement, "TimeConstraints")
-                    )
-            );
+            try {
+                // Замість javax.xml.datatype.Duration використовуємо java.time.Duration
+                String timeConstraintString = getElementTextContent(depositElement, "TimeConstraints");
+                Duration timeConstraints = Duration.parse(timeConstraintString);  // Перетворюємо рядок на Duration
+                deposit.setTimeConstraints(timeConstraints);
+            } catch (Exception e) {
+                deposit.setTimeConstraints(Duration.ZERO); // або інша обробка помилки
+            }
 
             deposits.add(deposit);
         }
@@ -56,6 +64,10 @@ public class DOMParser {
 
     private String getElementTextContent(Element parent, String elementName) {
         NodeList nodeList = parent.getElementsByTagName(elementName);
-        return nodeList.item(0).getTextContent();
+        if (nodeList.getLength() > 0) {
+            return nodeList.item(0).getTextContent();
+        } else {
+            return ""; // або повернути значення за замовчуванням
+        }
     }
 }

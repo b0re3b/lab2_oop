@@ -2,12 +2,12 @@ package com.bankdeposits.parser;
 
 import com.bankdeposits.model.DepositModel;
 
-import javax.xml.datatype.DatatypeFactory;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
 import java.io.FileInputStream;
 import java.math.BigDecimal;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,9 +60,13 @@ public class StAXParser {
                                     currentDeposit.setProfitability(new BigDecimal(text));
                                     break;
                                 case "TimeConstraints":
-                                    currentDeposit.setTimeConstraints(
-                                            DatatypeFactory.newInstance().newDuration(text)
-                                    );
+                                    try {
+                                        // Перетворення часу в Duration
+                                        long timeInDays = Long.parseLong(text);
+                                        currentDeposit.setTimeConstraints(Duration.ofDays(timeInDays));
+                                    } catch (NumberFormatException e) {
+                                        currentDeposit.setTimeConstraints(Duration.ZERO); // Якщо помилка в конвертації
+                                    }
                                     break;
                             }
                         }

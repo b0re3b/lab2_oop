@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <!-- Перелік типів вкладів -->
-    <xs:simpleType name="DepositType">
+    <xs:simpleType name="DepositKind">  <!-- Renamed simple type -->
         <xs:restriction base="xs:string">
             <xs:enumeration value="До запитання"/>
             <xs:enumeration value="Строковий"/>
@@ -34,7 +34,7 @@
         <xs:sequence>
             <xs:element name="Name" type="xs:string"/>
             <xs:element name="Country" type="xs:string"/>
-            <xs:element name="Type" type="DepositType"/>
+            <xs:element name="Type" type="DepositKind"/>  <!-- Changed reference to DepositKind -->
             <xs:element name="Depositor" type="xs:string"/>
             <xs:element name="Amount" type="AmountType"/>
             <xs:element name="Profitability" type="ProfitabilityType"/>

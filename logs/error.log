@@ -1,0 +1,57 @@
+2024-11-30 15:05:59.928 [main] ERROR com.bankdeposits.MainApplication - Помилка в роботі додатку
+javax.xml.transform.TransformerConfigurationException: line 7: Unsupported XSL element 'for-each-group'.
+	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl.newTemplates(TransformerFactoryImpl.java:1079) ~[?:?]
+	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl.newTransformer(TransformerFactoryImpl.java:834) ~[?:?]
+	at com.bankdeposits.MainApplication.transformXMLWithXSLT(MainApplication.java:110) ~[classes/:?]
+	at com.bankdeposits.MainApplication.main(MainApplication.java:49) [classes/:?]
+2024-11-30 15:07:21.545 [main] ERROR com.bankdeposits.MainApplication - Помилка в роботі додатку
+javax.xml.transform.TransformerException: java.lang.RuntimeException: Unsupported XSL element 'http://www.w3.org/1999/XSL/Transform:for-each-group'
+	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:790) ~[?:?]
+	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:395) ~[?:?]
+	at com.bankdeposits.MainApplication.transformXMLWithXSLT(MainApplication.java:117) ~[classes/:?]
+	at com.bankdeposits.MainApplication.main(MainApplication.java:49) [classes/:?]
+Caused by: java.lang.RuntimeException: Unsupported XSL element 'http://www.w3.org/1999/XSL/Transform:for-each-group'
+	at com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary.runTimeError(BasisLibrary.java:1622) ~[?:?]
+	at com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary.runTimeError(BasisLibrary.java:1626) ~[?:?]
+	at com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary.unsupported_ElementF(BasisLibrary.java:476) ~[?:?]
+	at die.verwandlung.GregorSamsa.template$dot$0() ~[?:?]
+	at die.verwandlung.GregorSamsa.applyTemplates() ~[?:?]
+	at die.verwandlung.GregorSamsa.applyTemplates() ~[?:?]
+	at die.verwandlung.GregorSamsa.transform() ~[?:?]
+	at com.sun.org.apache.xalan.internal.xsltc.runtime.AbstractTranslet.transform(AbstractTranslet.java:627) ~[?:?]
+	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:783) ~[?:?]
+	... 3 more
+2024-11-30 15:11:13.371 [main] ERROR com.bankdeposits.MainApplication - Помилка в роботі додатку
+javax.xml.transform.TransformerException: java.lang.RuntimeException: Unsupported XSL element 'http://www.w3.org/1999/XSL/Transform:for-each-group'
+	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:790) ~[?:?]
+	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:395) ~[?:?]
+	at com.bankdeposits.MainApplication.transformXMLWithXSLT(MainApplication.java:117) ~[classes/:?]
+	at com.bankdeposits.MainApplication.main(MainApplication.java:49) [classes/:?]
+Caused by: java.lang.RuntimeException: Unsupported XSL element 'http://www.w3.org/1999/XSL/Transform:for-each-group'
+	at com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary.runTimeError(BasisLibrary.java:1622) ~[?:?]
+	at com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary.runTimeError(BasisLibrary.java:1626) ~[?:?]
+	at com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary.unsupported_ElementF(BasisLibrary.java:476) ~[?:?]
+	at die.verwandlung.GregorSamsa.template$dot$0() ~[?:?]
+	at die.verwandlung.GregorSamsa.applyTemplates() ~[?:?]
+	at die.verwandlung.GregorSamsa.applyTemplates() ~[?:?]
+	at die.verwandlung.GregorSamsa.transform() ~[?:?]
+	at com.sun.org.apache.xalan.internal.xsltc.runtime.AbstractTranslet.transform(AbstractTranslet.java:627) ~[?:?]
+	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:783) ~[?:?]
+	... 3 more
+2024-11-30 15:19:48.673 [main] ERROR com.bankdeposits.MainApplication - Помилка в роботі додатку
+javax.xml.transform.TransformerException: java.lang.RuntimeException: Unsupported XSL element 'http://www.w3.org/1999/XSL/Transform:for-each-group'
+	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:790) ~[?:?]
+	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:395) ~[?:?]
+	at com.bankdeposits.MainApplication.transformXMLWithXSLT(MainApplication.java:117) ~[classes/:?]
+	at com.bankdeposits.MainApplication.main(MainApplication.java:49) [classes/:?]
+Caused by: java.lang.RuntimeException: Unsupported XSL element 'http://www.w3.org/1999/XSL/Transform:for-each-group'
+	at com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary.runTimeError(BasisLibrary.java:1622) ~[?:?]
+	at com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary.runTimeError(BasisLibrary.java:1626) ~[?:?]
+	at com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary.unsupported_ElementF(BasisLibrary.java:476) ~[?:?]
+	at die.verwandlung.GregorSamsa.template$dot$0() ~[?:?]
+	at die.verwandlung.GregorSamsa.applyTemplates() ~[?:?]
+	at die.verwandlung.GregorSamsa.applyTemplates() ~[?:?]
+	at die.verwandlung.GregorSamsa.transform() ~[?:?]
+	at com.sun.org.apache.xalan.internal.xsltc.runtime.AbstractTranslet.transform(AbstractTranslet.java:627) ~[?:?]
+	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:783) ~[?:?]
+	... 3 more
