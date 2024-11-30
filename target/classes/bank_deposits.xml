@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bank xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="bank_deposits.xsd">
+    <Deposit id="deposit1">
+        <Name>ПриватБанк</Name>
+        <Country>Україна</Country>
+        <Type>Ощадний</Type>
+        <Depositor>Іван Петров</Depositor>
+        <Amount>10000.50</Amount>
+        <Profitability>12.5</Profitability>
+        <TimeConstraints>P1Y6M</TimeConstraints>
+    </Deposit>
+    <Deposit id="deposit2">
+        <Name>Ощадбанк</Name>
+        <Country>Україна</Country>
+        <Type>Строковий</Type>
+        <Depositor>Олена Сидорова</Depositor>
+        <Amount>25000.75</Amount>
+        <Profitability>10.2</Profitability>
+        <TimeConstraints>P2Y</TimeConstraints>
+    </Deposit>
+</Bank>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <!-- Перелік типів вкладів -->
+    <xs:simpleType name="DepositType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="До запитання"/>
+            <xs:enumeration value="Строковий"/>
+            <xs:enumeration value="Розрахунковий"/>
+            <xs:enumeration value="Накопичувальний"/>
+            <xs:enumeration value="Ощадний"/>
+            <xs:enumeration value="Металевий"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Обмеження для суми вкладу -->
+    <xs:simpleType name="AmountType">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+            <xs:fractionDigits value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Обмеження для відсоткової ставки -->
+    <xs:simpleType name="ProfitabilityType">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="100"/>
+            <xs:fractionDigits value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Комплексний тип для депозиту -->
+    <xs:complexType name="DepositType">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="Country" type="xs:string"/>
+            <xs:element name="Type" type="DepositType"/>
+            <xs:element name="Depositor" type="xs:string"/>
+            <xs:element name="Amount" type="AmountType"/>
+            <xs:element name="Profitability" type="ProfitabilityType"/>
+            <xs:element name="TimeConstraints" type="xs:duration"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:ID" use="required"/>
+    </xs:complexType>
+
+    <!-- Кореневий елемент -->
+    <xs:element name="Bank">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Deposit" type="DepositType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
