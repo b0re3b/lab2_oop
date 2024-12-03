@@ -11,7 +11,18 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A parser for parsing XML files into a list of {@link DepositModel} objects using StAX.
+ */
 public class StAXParser {
+
+    /**
+     * Parses an XML file and converts it into a list of {@link DepositModel} objects.
+     *
+     * @param xmlPath the path to the XML file to be parsed.
+     * @return a list of parsed {@link DepositModel} objects.
+     * @throws Exception if an error occurs during parsing.
+     */
     public List<DepositModel> parse(String xmlPath) throws Exception {
         List<DepositModel> deposits = new ArrayList<>();
         XMLInputFactory factory = XMLInputFactory.newInstance();
@@ -29,7 +40,7 @@ public class StAXParser {
 
                     if ("Deposit".equals(elementName)) {
                         currentDeposit = new DepositModel();
-                        currentDeposit.setId(reader.getAttributeValue(null, "id"));
+                        currentDeposit.setId(reader.getAttributeValue(null, "id")); // Parse "id" attribute
                     }
 
                     currentElement = elementName;
@@ -54,18 +65,25 @@ public class StAXParser {
                                     currentDeposit.setDepositor(text);
                                     break;
                                 case "Amount":
-                                    currentDeposit.setAmount(new BigDecimal(text));
+                                    try {
+                                        currentDeposit.setAmount(new BigDecimal(text));
+                                    } catch (NumberFormatException e) {
+                                        currentDeposit.setAmount(BigDecimal.ZERO); // Default value or error handling
+                                    }
                                     break;
                                 case "Profitability":
-                                    currentDeposit.setProfitability(new BigDecimal(text));
+                                    try {
+                                        currentDeposit.setProfitability(new BigDecimal(text));
+                                    } catch (NumberFormatException e) {
+                                        currentDeposit.setProfitability(BigDecimal.ZERO); // Default value or error handling
+                                    }
                                     break;
                                 case "TimeConstraints":
                                     try {
-                                        // Перетворення часу в Duration
-                                        long timeInDays = Long.parseLong(text);
+                                        long timeInDays = Long.parseLong(text); // Parse string as days
                                         currentDeposit.setTimeConstraints(Duration.ofDays(timeInDays));
                                     } catch (NumberFormatException e) {
-                                        currentDeposit.setTimeConstraints(Duration.ZERO); // Якщо помилка в конвертації
+                                        currentDeposit.setTimeConstraints(Duration.ZERO); // Default value or error handling
                                     }
                                     break;
                             }
@@ -77,7 +95,7 @@ public class StAXParser {
                     String endElementName = reader.getLocalName();
 
                     if ("Deposit".equals(endElementName)) {
-                        deposits.add(currentDeposit);
+                        deposits.add(currentDeposit); // Add the deposit to the list
                         currentDeposit = null;
                     }
 

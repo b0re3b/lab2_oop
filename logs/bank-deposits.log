@@ -1,129 +1,33 @@
-2024-11-30 15:03:49.234 [main] INFO  com.bankdeposits.MainApplication - XML Validation Result: Invalid
-2024-11-30 15:03:49.241 [main] INFO  com.bankdeposits.MainApplication - SAX Parser: Parsed 2 deposits
-2024-11-30 15:03:49.242 [main] INFO  com.bankdeposits.MainApplication - DOM Parser: Parsed 2 deposits
-2024-11-30 15:03:49.246 [main] INFO  com.bankdeposits.MainApplication - StAX Parser: Parsed 2 deposits
-2024-11-30 15:03:49.248 [main] INFO  com.bankdeposits.MainApplication - Deposits sorted by amount:
-2024-11-30 15:03:49.250 [main] INFO  com.bankdeposits.MainApplication - ПриватБанк: 10000.50
-2024-11-30 15:03:49.250 [main] INFO  com.bankdeposits.MainApplication - Ощадбанк: 25000.75
-2024-11-30 15:03:49.250 [main] INFO  com.bankdeposits.MainApplication - Deposits sorted by profitability (descending):
-2024-11-30 15:03:49.250 [main] INFO  com.bankdeposits.MainApplication - ПриватБанк: 12.5%
-2024-11-30 15:03:49.250 [main] INFO  com.bankdeposits.MainApplication - Ощадбанк: 10.2%
-2024-11-30 15:05:59.898 [main] INFO  com.bankdeposits.MainApplication - XML Validation Result: Invalid
-2024-11-30 15:05:59.904 [main] INFO  com.bankdeposits.MainApplication - SAX Parser: Parsed 2 deposits
-2024-11-30 15:05:59.907 [main] INFO  com.bankdeposits.MainApplication - DOM Parser: Parsed 2 deposits
-2024-11-30 15:05:59.909 [main] INFO  com.bankdeposits.MainApplication - StAX Parser: Parsed 2 deposits
-2024-11-30 15:05:59.911 [main] INFO  com.bankdeposits.MainApplication - Deposits sorted by amount:
-2024-11-30 15:05:59.912 [main] INFO  com.bankdeposits.MainApplication - ПриватБанк: 10000.50
-2024-11-30 15:05:59.912 [main] INFO  com.bankdeposits.MainApplication - Ощадбанк: 25000.75
-2024-11-30 15:05:59.912 [main] INFO  com.bankdeposits.MainApplication - Deposits sorted by profitability (descending):
-2024-11-30 15:05:59.912 [main] INFO  com.bankdeposits.MainApplication - ПриватБанк: 12.5%
-2024-11-30 15:05:59.912 [main] INFO  com.bankdeposits.MainApplication - Ощадбанк: 10.2%
-2024-11-30 15:05:59.928 [main] ERROR com.bankdeposits.MainApplication - Помилка в роботі додатку
-javax.xml.transform.TransformerConfigurationException: line 7: Unsupported XSL element 'for-each-group'.
-	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl.newTemplates(TransformerFactoryImpl.java:1079) ~[?:?]
-	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl.newTransformer(TransformerFactoryImpl.java:834) ~[?:?]
-	at com.bankdeposits.MainApplication.transformXMLWithXSLT(MainApplication.java:110) ~[classes/:?]
-	at com.bankdeposits.MainApplication.main(MainApplication.java:49) [classes/:?]
-2024-11-30 15:07:21.193 [main] INFO  com.bankdeposits.MainApplication - XML Validation Result: Valid
-2024-11-30 15:07:21.202 [main] INFO  com.bankdeposits.MainApplication - SAX Parser: Parsed 2 deposits
-2024-11-30 15:07:21.204 [main] INFO  com.bankdeposits.MainApplication - DOM Parser: Parsed 2 deposits
-2024-11-30 15:07:21.208 [main] INFO  com.bankdeposits.MainApplication - StAX Parser: Parsed 2 deposits
-2024-11-30 15:07:21.212 [main] INFO  com.bankdeposits.MainApplication - Deposits sorted by amount:
-2024-11-30 15:07:21.212 [main] INFO  com.bankdeposits.MainApplication - ПриватБанк: 10000.50
-2024-11-30 15:07:21.213 [main] INFO  com.bankdeposits.MainApplication - Ощадбанк: 25000.75
-2024-11-30 15:07:21.213 [main] INFO  com.bankdeposits.MainApplication - Deposits sorted by profitability (descending):
-2024-11-30 15:07:21.214 [main] INFO  com.bankdeposits.MainApplication - ПриватБанк: 12.5%
-2024-11-30 15:07:21.214 [main] INFO  com.bankdeposits.MainApplication - Ощадбанк: 10.2%
-2024-11-30 15:07:21.545 [main] ERROR com.bankdeposits.MainApplication - Помилка в роботі додатку
-javax.xml.transform.TransformerException: java.lang.RuntimeException: Unsupported XSL element 'http://www.w3.org/1999/XSL/Transform:for-each-group'
-	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:790) ~[?:?]
-	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:395) ~[?:?]
-	at com.bankdeposits.MainApplication.transformXMLWithXSLT(MainApplication.java:117) ~[classes/:?]
-	at com.bankdeposits.MainApplication.main(MainApplication.java:49) [classes/:?]
-Caused by: java.lang.RuntimeException: Unsupported XSL element 'http://www.w3.org/1999/XSL/Transform:for-each-group'
-	at com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary.runTimeError(BasisLibrary.java:1622) ~[?:?]
-	at com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary.runTimeError(BasisLibrary.java:1626) ~[?:?]
-	at com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary.unsupported_ElementF(BasisLibrary.java:476) ~[?:?]
-	at die.verwandlung.GregorSamsa.template$dot$0() ~[?:?]
-	at die.verwandlung.GregorSamsa.applyTemplates() ~[?:?]
-	at die.verwandlung.GregorSamsa.applyTemplates() ~[?:?]
-	at die.verwandlung.GregorSamsa.transform() ~[?:?]
-	at com.sun.org.apache.xalan.internal.xsltc.runtime.AbstractTranslet.transform(AbstractTranslet.java:627) ~[?:?]
-	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:783) ~[?:?]
-	... 3 more
-2024-11-30 15:11:13.293 [main] INFO  com.bankdeposits.MainApplication - XML Validation Result: Valid
-2024-11-30 15:11:13.298 [main] INFO  com.bankdeposits.MainApplication - SAX Parser: Parsed 2 deposits
-2024-11-30 15:11:13.301 [main] INFO  com.bankdeposits.MainApplication - DOM Parser: Parsed 2 deposits
-2024-11-30 15:11:13.305 [main] INFO  com.bankdeposits.MainApplication - StAX Parser: Parsed 2 deposits
-2024-11-30 15:11:13.307 [main] INFO  com.bankdeposits.MainApplication - Deposits sorted by amount:
-2024-11-30 15:11:13.308 [main] INFO  com.bankdeposits.MainApplication - ПриватБанк: 10000.50
-2024-11-30 15:11:13.308 [main] INFO  com.bankdeposits.MainApplication - Ощадбанк: 25000.75
-2024-11-30 15:11:13.308 [main] INFO  com.bankdeposits.MainApplication - Deposits sorted by profitability (descending):
-2024-11-30 15:11:13.308 [main] INFO  com.bankdeposits.MainApplication - ПриватБанк: 12.5%
-2024-11-30 15:11:13.308 [main] INFO  com.bankdeposits.MainApplication - Ощадбанк: 10.2%
-2024-11-30 15:11:13.371 [main] ERROR com.bankdeposits.MainApplication - Помилка в роботі додатку
-javax.xml.transform.TransformerException: java.lang.RuntimeException: Unsupported XSL element 'http://www.w3.org/1999/XSL/Transform:for-each-group'
-	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:790) ~[?:?]
-	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:395) ~[?:?]
-	at com.bankdeposits.MainApplication.transformXMLWithXSLT(MainApplication.java:117) ~[classes/:?]
-	at com.bankdeposits.MainApplication.main(MainApplication.java:49) [classes/:?]
-Caused by: java.lang.RuntimeException: Unsupported XSL element 'http://www.w3.org/1999/XSL/Transform:for-each-group'
-	at com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary.runTimeError(BasisLibrary.java:1622) ~[?:?]
-	at com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary.runTimeError(BasisLibrary.java:1626) ~[?:?]
-	at com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary.unsupported_ElementF(BasisLibrary.java:476) ~[?:?]
-	at die.verwandlung.GregorSamsa.template$dot$0() ~[?:?]
-	at die.verwandlung.GregorSamsa.applyTemplates() ~[?:?]
-	at die.verwandlung.GregorSamsa.applyTemplates() ~[?:?]
-	at die.verwandlung.GregorSamsa.transform() ~[?:?]
-	at com.sun.org.apache.xalan.internal.xsltc.runtime.AbstractTranslet.transform(AbstractTranslet.java:627) ~[?:?]
-	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:783) ~[?:?]
-	... 3 more
-2024-11-30 15:19:48.562 [main] INFO  com.bankdeposits.MainApplication - XML Validation Result: Valid
-2024-11-30 15:19:48.572 [main] INFO  com.bankdeposits.MainApplication - SAX Parser: Parsed 2 deposits
-2024-11-30 15:19:48.576 [main] INFO  com.bankdeposits.MainApplication - DOM Parser: Parsed 2 deposits
-2024-11-30 15:19:48.580 [main] INFO  com.bankdeposits.MainApplication - StAX Parser: Parsed 2 deposits
-2024-11-30 15:19:48.583 [main] INFO  com.bankdeposits.MainApplication - Deposits sorted by amount:
-2024-11-30 15:19:48.583 [main] INFO  com.bankdeposits.MainApplication - ПриватБанк: 10000.50
-2024-11-30 15:19:48.583 [main] INFO  com.bankdeposits.MainApplication - Ощадбанк: 25000.75
-2024-11-30 15:19:48.584 [main] INFO  com.bankdeposits.MainApplication - Deposits sorted by profitability (descending):
-2024-11-30 15:19:48.584 [main] INFO  com.bankdeposits.MainApplication - ПриватБанк: 12.5%
-2024-11-30 15:19:48.584 [main] INFO  com.bankdeposits.MainApplication - Ощадбанк: 10.2%
-2024-11-30 15:19:48.673 [main] ERROR com.bankdeposits.MainApplication - Помилка в роботі додатку
-javax.xml.transform.TransformerException: java.lang.RuntimeException: Unsupported XSL element 'http://www.w3.org/1999/XSL/Transform:for-each-group'
-	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:790) ~[?:?]
-	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:395) ~[?:?]
-	at com.bankdeposits.MainApplication.transformXMLWithXSLT(MainApplication.java:117) ~[classes/:?]
-	at com.bankdeposits.MainApplication.main(MainApplication.java:49) [classes/:?]
-Caused by: java.lang.RuntimeException: Unsupported XSL element 'http://www.w3.org/1999/XSL/Transform:for-each-group'
-	at com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary.runTimeError(BasisLibrary.java:1622) ~[?:?]
-	at com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary.runTimeError(BasisLibrary.java:1626) ~[?:?]
-	at com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary.unsupported_ElementF(BasisLibrary.java:476) ~[?:?]
-	at die.verwandlung.GregorSamsa.template$dot$0() ~[?:?]
-	at die.verwandlung.GregorSamsa.applyTemplates() ~[?:?]
-	at die.verwandlung.GregorSamsa.applyTemplates() ~[?:?]
-	at die.verwandlung.GregorSamsa.transform() ~[?:?]
-	at com.sun.org.apache.xalan.internal.xsltc.runtime.AbstractTranslet.transform(AbstractTranslet.java:627) ~[?:?]
-	at com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl.transform(TransformerImpl.java:783) ~[?:?]
-	... 3 more
-2024-11-30 15:25:02.867 [main] INFO  com.bankdeposits.MainApplication - XML Validation Result: Valid
-2024-11-30 15:25:02.872 [main] INFO  com.bankdeposits.MainApplication - SAX Parser: Parsed 2 deposits
-2024-11-30 15:25:02.874 [main] INFO  com.bankdeposits.MainApplication - DOM Parser: Parsed 2 deposits
-2024-11-30 15:25:02.876 [main] INFO  com.bankdeposits.MainApplication - StAX Parser: Parsed 2 deposits
-2024-11-30 15:25:02.879 [main] INFO  com.bankdeposits.MainApplication - Deposits sorted by amount:
-2024-11-30 15:25:02.879 [main] INFO  com.bankdeposits.MainApplication - ПриватБанк: 10000.50
-2024-11-30 15:25:02.880 [main] INFO  com.bankdeposits.MainApplication - Ощадбанк: 25000.75
-2024-11-30 15:25:02.880 [main] INFO  com.bankdeposits.MainApplication - Deposits sorted by profitability (descending):
-2024-11-30 15:25:02.880 [main] INFO  com.bankdeposits.MainApplication - ПриватБанк: 12.5%
-2024-11-30 15:25:02.880 [main] INFO  com.bankdeposits.MainApplication - Ощадбанк: 10.2%
-2024-11-30 15:25:03.218 [main] INFO  com.bankdeposits.MainApplication - XML файл успішно трансформовано з використанням XSLT в: /Users/bogdanresetko/Desktop/oop_lab1/lab2_oop/lab2_oop/lab2_oop/src/main/resources/transformed_output.txt
-2024-11-30 16:12:23.651 [main] INFO  com.bankdeposits.MainApplication - XML Validation Result: Valid
-2024-11-30 16:12:23.656 [main] INFO  com.bankdeposits.MainApplication - SAX Parser: Parsed 2 deposits
-2024-11-30 16:12:23.658 [main] INFO  com.bankdeposits.MainApplication - DOM Parser: Parsed 2 deposits
-2024-11-30 16:12:23.660 [main] INFO  com.bankdeposits.MainApplication - StAX Parser: Parsed 2 deposits
-2024-11-30 16:12:23.663 [main] INFO  com.bankdeposits.MainApplication - Deposits sorted by amount:
-2024-11-30 16:12:23.663 [main] INFO  com.bankdeposits.MainApplication - ПриватБанк: 10000.50
-2024-11-30 16:12:23.663 [main] INFO  com.bankdeposits.MainApplication - Ощадбанк: 25000.75
-2024-11-30 16:12:23.663 [main] INFO  com.bankdeposits.MainApplication - Deposits sorted by profitability (descending):
-2024-11-30 16:12:23.664 [main] INFO  com.bankdeposits.MainApplication - ПриватБанк: 12.5%
-2024-11-30 16:12:23.664 [main] INFO  com.bankdeposits.MainApplication - Ощадбанк: 10.2%
-2024-11-30 16:12:24.045 [main] INFO  com.bankdeposits.MainApplication - XML файл успішно трансформовано з використанням XSLT в: /Users/bogdanresetko/Desktop/oop_lab1/lab2_oop/lab2_oop/lab2_oop/src/main/resources/transformed_output.txt
+2024-12-03 01:05:20.237 [main] INFO  com.bankdeposits.MainApplication - XML Validation Result: Valid
+2024-12-03 01:05:20.262 [main] INFO  com.bankdeposits.MainApplication - SAX Parser: Parsed 2 deposits
+2024-12-03 01:05:20.265 [main] INFO  com.bankdeposits.MainApplication - DOM Parser: Parsed 2 deposits
+2024-12-03 01:05:20.269 [main] INFO  com.bankdeposits.MainApplication - StAX Parser: Parsed 2 deposits
+2024-12-03 01:05:20.279 [main] INFO  com.bankdeposits.MainApplication - Deposits sorted by amount:
+2024-12-03 01:05:20.281 [main] INFO  com.bankdeposits.MainApplication - ПриватБанк: 10000.50
+2024-12-03 01:05:20.281 [main] INFO  com.bankdeposits.MainApplication - Ощадбанк: 25000.75
+2024-12-03 01:05:20.282 [main] INFO  com.bankdeposits.MainApplication - Deposits sorted by profitability (descending):
+2024-12-03 01:05:20.282 [main] INFO  com.bankdeposits.MainApplication - ПриватБанк: 12.5%
+2024-12-03 01:05:20.283 [main] INFO  com.bankdeposits.MainApplication - Ощадбанк: 10.2%
+2024-12-03 01:05:20.644 [main] INFO  com.bankdeposits.MainApplication - XML файл успішно трансформовано з використанням XSLT в: /Users/bogdanresetko/Desktop/oop_lab1/lab2_oop/lab2_oop/lab2_oop/src/main/resources/transformed_output.txt
+2024-12-03 12:12:51.863 [main] INFO  com.bankdeposits.MainApplication - XML Validation Result: Valid
+2024-12-03 12:12:51.870 [main] INFO  com.bankdeposits.MainApplication - SAX Parser: Parsed 2 deposits
+2024-12-03 12:12:51.872 [main] INFO  com.bankdeposits.MainApplication - DOM Parser: Parsed 2 deposits
+2024-12-03 12:12:51.877 [main] INFO  com.bankdeposits.MainApplication - StAX Parser: Parsed 2 deposits
+2024-12-03 12:12:51.881 [main] INFO  com.bankdeposits.MainApplication - Deposits sorted by amount:
+2024-12-03 12:12:51.881 [main] INFO  com.bankdeposits.MainApplication - ПриватБанк: 10000.50
+2024-12-03 12:12:51.881 [main] INFO  com.bankdeposits.MainApplication - Ощадбанк: 25000.75
+2024-12-03 12:12:51.881 [main] INFO  com.bankdeposits.MainApplication - Deposits sorted by profitability (descending):
+2024-12-03 12:12:51.882 [main] INFO  com.bankdeposits.MainApplication - ПриватБанк: 12.5%
+2024-12-03 12:12:51.882 [main] INFO  com.bankdeposits.MainApplication - Ощадбанк: 10.2%
+2024-12-03 12:12:52.227 [main] INFO  com.bankdeposits.MainApplication - XML successfully transformed using XSLT to: /Users/bogdanresetko/Desktop/oop_lab1/lab2_oop/lab2_oop/lab2_oop/src/main/resources/transformed_output.txt
+2024-12-03 12:19:37.576 [main] INFO  com.bankdeposits.MainApplication - XML Validation Result: Valid
+2024-12-03 12:19:37.582 [main] INFO  com.bankdeposits.MainApplication - SAX Parser: Parsed 2 deposits
+2024-12-03 12:19:37.584 [main] INFO  com.bankdeposits.MainApplication - DOM Parser: Parsed 2 deposits
+2024-12-03 12:19:37.586 [main] INFO  com.bankdeposits.MainApplication - StAX Parser: Parsed 2 deposits
+2024-12-03 12:19:37.588 [main] INFO  com.bankdeposits.MainApplication - Deposits sorted by amount:
+2024-12-03 12:19:37.589 [main] INFO  com.bankdeposits.MainApplication - ПриватБанк: 10000.50
+2024-12-03 12:19:37.589 [main] INFO  com.bankdeposits.MainApplication - Ощадбанк: 25000.75
+2024-12-03 12:19:37.589 [main] INFO  com.bankdeposits.MainApplication - Deposits sorted by profitability (descending):
+2024-12-03 12:19:37.589 [main] INFO  com.bankdeposits.MainApplication - ПриватБанк: 12.5%
+2024-12-03 12:19:37.589 [main] INFO  com.bankdeposits.MainApplication - Ощадбанк: 10.2%
+2024-12-03 12:19:37.943 [main] INFO  com.bankdeposits.MainApplication - XML successfully transformed using XSLT to: /Users/bogdanresetko/Desktop/oop_lab1/lab2_oop/lab2_oop/lab2_oop/src/main/resources/transformed_output.txt

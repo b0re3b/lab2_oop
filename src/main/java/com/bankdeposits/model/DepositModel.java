@@ -4,20 +4,38 @@ import java.math.BigDecimal;
 import java.time.Duration;
 import java.util.Objects;
 
+/**
+ * Represents a deposit model with details about the deposit,
+ * including the bank, depositor, amount, profitability, and duration.
+ */
 public class DepositModel implements Comparable<DepositModel> {
-    private String id;
-    private String name;
-    private String country;
-    private String type;
-    private String depositor;
-    private BigDecimal amount;
-    private BigDecimal profitability;
-    private Duration timeConstraints;  // Використовуємо Duration, а не long
 
-    // Конструктор за замовчуванням
+    private String id; // Unique identifier for the deposit
+    private String name; // Name of the bank or deposit
+    private String country; // Country where the bank is located
+    private String type; // Type of deposit
+    private String depositor; // Name of the depositor
+    private BigDecimal amount; // Deposit amount
+    private BigDecimal profitability; // Profitability (interest rate)
+    private Duration timeConstraints; // Duration of the deposit
+
+    /**
+     * Default constructor.
+     */
     public DepositModel() {}
 
-    // Повний конструктор
+    /**
+     * Full constructor to initialize all fields of the deposit model.
+     *
+     * @param id              Unique identifier of the deposit.
+     * @param name            Name of the bank or deposit.
+     * @param country         Country where the bank is located.
+     * @param type            Type of deposit.
+     * @param depositor       Name of the depositor.
+     * @param amount          Amount of the deposit.
+     * @param profitability   Interest rate of the deposit.
+     * @param timeConstraints Duration of the deposit.
+     */
     public DepositModel(String id, String name, String country, String type,
                         String depositor, BigDecimal amount,
                         BigDecimal profitability, Duration timeConstraints) {
@@ -31,7 +49,8 @@ public class DepositModel implements Comparable<DepositModel> {
         this.timeConstraints = timeConstraints;
     }
 
-    // Геттери та сеттери
+    // Getters and setters
+
     public String getId() {
         return id;
     }
@@ -92,16 +111,28 @@ public class DepositModel implements Comparable<DepositModel> {
         return timeConstraints;
     }
 
-    // Використовуємо Duration, а не long
     public void setTimeConstraints(Duration timeConstraints) {
         this.timeConstraints = timeConstraints;
     }
 
+    /**
+     * Compares this deposit model with another based on the deposit amount.
+     *
+     * @param other Another deposit model to compare to.
+     * @return A negative integer, zero, or a positive integer if this deposit
+     *         amount is less than, equal to, or greater than the other deposit amount.
+     */
     @Override
     public int compareTo(DepositModel other) {
         return this.amount.compareTo(other.amount);
     }
 
+    /**
+     * Checks if this deposit model is equal to another object.
+     *
+     * @param o The object to compare with.
+     * @return {@code true} if the objects are equal; {@code false} otherwise.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -112,11 +143,21 @@ public class DepositModel implements Comparable<DepositModel> {
                 Objects.equals(amount, deposit.amount);
     }
 
+    /**
+     * Computes the hash code for this deposit model.
+     *
+     * @return The hash code.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(id, name, amount);
     }
 
+    /**
+     * Returns a string representation of the deposit model.
+     *
+     * @return A string containing the deposit details.
+     */
     @Override
     public String toString() {
         return "DepositModel{" +

@@ -13,53 +13,55 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Utility class for validating XML files against XSD schemas.
+ */
 public class XMLValidator {
     private static final Logger LOGGER = Logger.getLogger(XMLValidator.class.getName());
 
     /**
-     * Перевірка XML-документа на відповідність XSD-схемі
+     * Validates an XML document against an XSD schema.
      *
-     * @param xmlPath шлях до XML-файлу
-     * @param xsdPath шлях до XSD-файлу
-     * @return true, якщо XML валідний, інакше false
+     * @param xmlPath the path to the XML file.
+     * @param xsdPath the path to the XSD schema file.
+     * @return true if the XML is valid, false otherwise.
      */
     public static boolean validateXML(String xmlPath, String xsdPath) {
         try {
-            // Створення фабрики схем
             SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 
-            // Завантаження XSD-схеми
+            // Load XSD schema
             Source schemaSource = new StreamSource(new File(xsdPath));
             Schema schema = factory.newSchema(schemaSource);
 
-            // Створення валідатора
+            // Create Validator instance
             Validator validator = schema.newValidator();
 
-            // Джерело для XML-документа
+            // Load XML source
             Source xmlSource = new StreamSource(new File(xmlPath));
 
-            // Перевірка XML
+            // Validate XML
             validator.validate(xmlSource);
 
-            LOGGER.info("XML документ " + xmlPath + " є валідним.");
+            LOGGER.info("XML document " + xmlPath + " is valid.");
             return true;
 
         } catch (SAXException e) {
-            LOGGER.log(Level.SEVERE, "XML документ не відповідає XSD схемі: " + e.getMessage(), e);
+            LOGGER.log(Level.SEVERE, "XML document is not valid against the XSD schema: " + e.getMessage(), e);
             return false;
         } catch (IOException e) {
-            LOGGER.log(Level.SEVERE, "Помилка читання файлів: " + e.getMessage(), e);
+            LOGGER.log(Level.SEVERE, "Error reading files: " + e.getMessage(), e);
             return false;
         }
     }
 
     /**
-     * Перевантажений метод валідації з більш детальним виведенням помилок
+     * Validates an XML document against an XSD schema with verbose error reporting.
      *
-     * @param xmlPath шлях до XML-файлу
-     * @param xsdPath шлях до XSD-файлу
-     * @param verbose режим детального виведення
-     * @return true, якщо XML валідний, інакше false
+     * @param xmlPath the path to the XML file.
+     * @param xsdPath the path to the XSD schema file.
+     * @param verbose whether to log detailed error messages.
+     * @return true if the XML is valid, false otherwise.
      */
     public static boolean validateXML(String xmlPath, String xsdPath, boolean verbose) {
         try {
@@ -69,30 +71,32 @@ public class XMLValidator {
             Validator validator = schema.newValidator();
             Source xmlSource = new StreamSource(new File(xmlPath));
 
+            // Perform validation
             validator.validate(xmlSource);
 
             if (verbose) {
-                LOGGER.info("XML документ повністю відповідає XSD схемі.");
-                LOGGER.info("Шлях до XML: " + xmlPath);
-                LOGGER.info("Шлях до XSD: " + xsdPath);
+                LOGGER.info("XML document is fully compliant with the XSD schema.");
+                LOGGER.info("XML Path: " + xmlPath);
+                LOGGER.info("XSD Path: " + xsdPath);
             }
 
             return true;
 
         } catch (SAXException e) {
             if (verbose) {
-                LOGGER.log(Level.SEVERE, "Детальна інформація про помилку валідації:", e);
-                LOGGER.severe("Рядок: " + e.getLocalizedMessage());
+                LOGGER.log(Level.SEVERE, "Detailed validation error information:", e);
+                LOGGER.severe("Error message: " + e.getLocalizedMessage());
             }
             return false;
         } catch (IOException e) {
             if (verbose) {
-                LOGGER.log(Level.SEVERE, "Помилка читання файлів:", e);
+                LOGGER.log(Level.SEVERE, "File reading error:", e);
             }
             return false;
         }
     }
 
-    // Приватний конструктор для утилітного класу
-    private XMLValidator() {}
+    // Private constructor to prevent instantiation
+    private XMLValidator() {
+    }
 }
