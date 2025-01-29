@@ -31,3 +31,14 @@
 2024-12-03 12:19:37.589 [main] INFO  com.bankdeposits.MainApplication - ПриватБанк: 12.5%
 2024-12-03 12:19:37.589 [main] INFO  com.bankdeposits.MainApplication - Ощадбанк: 10.2%
 2024-12-03 12:19:37.943 [main] INFO  com.bankdeposits.MainApplication - XML successfully transformed using XSLT to: /Users/bogdanresetko/Desktop/oop_lab1/lab2_oop/lab2_oop/lab2_oop/src/main/resources/transformed_output.txt
+2025-01-29 13:46:23.698 [main] INFO  com.bankdeposits.MainApplication - XML Validation Result: Valid
+2025-01-29 13:46:23.702 [main] INFO  com.bankdeposits.MainApplication - SAX Parser: Parsed 2 deposits
+2025-01-29 13:46:23.704 [main] INFO  com.bankdeposits.MainApplication - DOM Parser: Parsed 2 deposits
+2025-01-29 13:46:23.706 [main] INFO  com.bankdeposits.MainApplication - StAX Parser: Parsed 2 deposits
+2025-01-29 13:46:23.708 [main] INFO  com.bankdeposits.MainApplication - Deposits sorted by amount:
+2025-01-29 13:46:23.708 [main] INFO  com.bankdeposits.MainApplication - ПриватБанк: 10000.50
+2025-01-29 13:46:23.708 [main] INFO  com.bankdeposits.MainApplication - Ощадбанк: 25000.75
+2025-01-29 13:46:23.709 [main] INFO  com.bankdeposits.MainApplication - Deposits sorted by profitability (descending):
+2025-01-29 13:46:23.709 [main] INFO  com.bankdeposits.MainApplication - ПриватБанк: 12.5%
+2025-01-29 13:46:23.709 [main] INFO  com.bankdeposits.MainApplication - Ощадбанк: 10.2%
+2025-01-29 13:46:23.979 [main] INFO  com.bankdeposits.MainApplication - XML successfully transformed using XSLT to: /home/b0r3d/lab2_oop/src/main/resources/transformed_output.txt
